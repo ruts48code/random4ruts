@@ -2,6 +2,7 @@ package random4ruts
 
 import (
 	"crypto/rand"
+	"log"
 	"math/big"
 )
 
@@ -14,6 +15,7 @@ func GetRandomBytes(n int64) []byte {
 	output := make([]byte, n)
 	_, err := rand.Read(output)
 	if err != nil {
+		log.Printf("Error: random4ruts-GetRandomBytes - read random error - %v\n", err)
 		return make([]byte, 0)
 	}
 	return output
